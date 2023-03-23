@@ -22,7 +22,7 @@ const createThumbnail = (data) => {
 };
 
 const renderThumbnails = () => {
-  pictures.forEach((picture) => container.append(createThumbnail(picture)));
+  pictures.forEach((data) => container.append(createThumbnail(data)));
 };
 
 export {renderThumbnails};

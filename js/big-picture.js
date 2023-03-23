@@ -1,5 +1,3 @@
-import {isEscapeKey} from './util.js';
-
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureCloseBtn = document.querySelector('.big-picture__cancel');
 const bigPhotoPreview = document.querySelector('.big-picture__preview');
@@ -33,19 +31,6 @@ const fillBigPicture = (data) => {
   bigPhotoPreview.querySelector('.comments-loader').classList.add('hidden');
 };
 
-const onDocumentKeydown = (event) => {
-  console.log(event);
-  if (isEscapeKey(event)) {
-    event.preventDefault();
-    closeBigPicture();
-  }
-};
-
-const onBigPictureCloseClick = (event) => {
-  event.preventDefault();
-  closeBigPicture();
-};
-
 const closeBigPicture = () => {
   bigPicture.classList.add('hidden');
   document.body.classList.remove('modal-open');
@@ -63,5 +48,17 @@ const openBigPicture = (data) => {
 
   fillBigPicture(data);
 };
+
+function onDocumentKeydown (event) {
+  if (event.key === 'Escape' && !event.target.closest('.social__footer-text')) {
+    event.preventDefault();
+    closeBigPicture();
+  }
+}
+
+function onBigPictureCloseClick (event) {
+  event.preventDefault();
+  closeBigPicture();
+}
 
 export {openBigPicture};
